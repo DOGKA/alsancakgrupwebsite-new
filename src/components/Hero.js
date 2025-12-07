@@ -222,8 +222,8 @@ const Hero = () => {
                     {/* Grid Background */}
                     <div className="absolute inset-0 bg-grid-slate opacity-30" />
                     
-                    {/* Radar Effect */}
-                    <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[500px] h-[500px]">
+                    {/* Radar Effect - Hidden on mobile */}
+                    <div className="hidden md:block absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
                       <div className="absolute inset-0 rounded-full border border-accent/20" />
                       <div className="absolute inset-8 rounded-full border border-accent/15" />
                       <div className="absolute inset-16 rounded-full border border-accent/10" />
@@ -238,9 +238,9 @@ const Hero = () => {
                       <div className="absolute top-1/2 right-1/6 w-2 h-2 bg-accent/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-                    {/* Floating Data Cards */}
+                    {/* Floating Data Cards - Hidden on mobile */}
                     <motion.div 
-                      className="absolute top-1/4 right-16 glass-card p-4 rounded-lg border border-accent/30"
+                      className="hidden lg:block absolute top-1/4 right-16 glass-card p-4 rounded-lg border border-accent/30"
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 4, repeat: Infinity }}
                     >
@@ -250,7 +250,7 @@ const Hero = () => {
                     </motion.div>
                     
                     <motion.div 
-                      className="absolute bottom-1/3 right-24 glass-card p-4 rounded-lg border border-accent/30"
+                      className="hidden lg:block absolute bottom-1/3 right-24 glass-card p-4 rounded-lg border border-accent/30"
                       animate={{ y: [0, 10, 0] }}
                       transition={{ duration: 5, repeat: Infinity, delay: 1 }}
                     >
@@ -264,30 +264,32 @@ const Hero = () => {
             )}
             
             {currentSlideData.type === 'asdtc' && (
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 flex items-center justify-center md:justify-end">
+                {/* Mobile: Centered, contain video */}
                 <video 
                   src={currentSlideData.videoSrc}
                   autoPlay 
                   loop 
                   muted 
                   playsInline 
-                  className="w-full h-full object-cover opacity-50"
+                  className="w-full h-full object-contain md:object-cover opacity-60 md:opacity-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/80 md:via-dark/70 to-transparent" />
               </div>
             )}
             
             {currentSlideData.type === 'railway' && (
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 flex items-center justify-center md:justify-end">
+                {/* Mobile: Centered, contain video */}
                 <video 
                   src="/locomotive-intro.webm"
                   autoPlay 
                   loop 
                   muted 
                   playsInline 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain md:object-cover opacity-70 md:opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/70 md:via-dark/60 to-transparent" />
               </div>
             )}
           </motion.div>
@@ -663,10 +665,31 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Side Navigation Arrows */}
+      {/* Navigation Arrows - Bottom on mobile, sides on desktop */}
+      {/* Mobile: Bottom center */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-4 md:hidden">
+        <button
+          onClick={prevSlide}
+          className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300"
+        >
+          <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          onClick={nextSlide}
+          className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300"
+        >
+          <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      
+      {/* Desktop: Sides */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300 hover:scale-110"
+        className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 glass-card rounded-full items-center justify-center hover:bg-glass-hover transition-all duration-300 hover:scale-110"
       >
         <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -675,7 +698,7 @@ const Hero = () => {
       
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300 hover:scale-110"
+        className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 glass-card rounded-full items-center justify-center hover:bg-glass-hover transition-all duration-300 hover:scale-110"
       >
         <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
