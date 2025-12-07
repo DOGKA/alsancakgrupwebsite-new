@@ -264,31 +264,37 @@ const Hero = () => {
             )}
             
             {currentSlideData.type === 'asdtc' && (
-              <div className="absolute inset-0 flex items-center justify-center md:justify-end">
-                {/* Mobile: Centered, contain video */}
-                <video 
-                  src={currentSlideData.videoSrc}
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="w-full h-full object-contain md:object-cover opacity-60 md:opacity-50"
-                />
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Mobile: 9:16 aspect ratio video, Desktop: cover */}
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <video 
+                    src={currentSlideData.videoSrc}
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="md:absolute md:inset-0 md:w-full md:h-full md:object-cover md:opacity-50 max-h-[80vh] w-auto h-auto object-contain opacity-60"
+                    style={{ aspectRatio: '9/16' }}
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/80 md:via-dark/70 to-transparent" />
               </div>
             )}
             
             {currentSlideData.type === 'railway' && (
-              <div className="absolute inset-0 flex items-center justify-center md:justify-end">
-                {/* Mobile: Centered, contain video */}
-                <video 
-                  src="/locomotive-intro.webm"
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="w-full h-full object-contain md:object-cover opacity-70 md:opacity-80"
-                />
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Mobile: 9:16 aspect ratio video, Desktop: cover */}
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <video 
+                    src="/locomotive-intro.webm"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="md:absolute md:inset-0 md:w-full md:h-full md:object-cover md:opacity-80 max-h-[80vh] w-auto h-auto object-contain opacity-70"
+                    style={{ aspectRatio: '9/16' }}
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/70 md:via-dark/60 to-transparent" />
               </div>
             )}
@@ -464,12 +470,12 @@ const Hero = () => {
                       </div>
                     </button>
                   </div>
-              ) : (
-                  // DELFLO Style HUD Elements for Alsancak Güvenlik
+                ) : (
+                  // DELFLO Style HUD Elements for Alsancak Güvenlik - Hidden on mobile
                   <div className="relative h-[400px] md:h-[500px] lg:h-[550px] flex items-center justify-center">
-                    {/* Radar Background */}
+                    {/* Radar Background - Visible on all */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="relative w-[400px] h-[400px] md:w-[500px] md:h-[500px]">
+                      <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
                         {/* Radar Sweep */}
                         <div className="absolute inset-0 rounded-full animate-radar-sweep">
                           <div className="w-full h-full rounded-full" style={{
@@ -489,9 +495,9 @@ const Hero = () => {
                 </div>
             </div>
 
-                    {/* HUD Card Top Left */}
+                    {/* HUD Card Top Left - Desktop only */}
                     <motion.div 
-                      className="absolute top-4 left-4 z-10 opacity-90"
+                      className="hidden md:block absolute top-4 left-4 z-10 opacity-90"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 }}
@@ -525,9 +531,9 @@ const Hero = () => {
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Top Right */}
+                    {/* HUD Card Top Right - Desktop only */}
                     <motion.div 
-                      className="absolute top-4 right-4 z-10 opacity-90"
+                      className="hidden md:block absolute top-4 right-4 z-10 opacity-90"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.7 }}
@@ -576,9 +582,9 @@ const Hero = () => {
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Bottom Left */}
+                    {/* HUD Card Bottom Left - Desktop only */}
                     <motion.div 
-                      className="absolute bottom-16 left-4 z-10 opacity-80"
+                      className="hidden md:block absolute bottom-16 left-4 z-10 opacity-80"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
@@ -611,9 +617,9 @@ const Hero = () => {
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Bottom Right */}
+                    {/* HUD Card Bottom Right - Desktop only */}
                     <motion.div 
-                      className="absolute bottom-16 right-4 z-10 opacity-80"
+                      className="hidden md:block absolute bottom-16 right-4 z-10 opacity-80"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.1 }}
