@@ -10,6 +10,8 @@ const Hero = () => {
   const heroRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const isScrolling = useRef(false);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -112,6 +114,41 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHeroActive, slides.length]);
 
+  // Touch/Swipe handling for mobile
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (isScrolling.current) return;
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    
+    const diffX = touchStartX.current - touchEndX;
+    const diffY = touchStartY.current - touchEndY;
+    
+    // Only trigger if horizontal swipe is more significant than vertical
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      isScrolling.current = true;
+      
+      if (diffX > 0) {
+        // Swipe left - next slide
+        if (currentSlide < slides.length - 1) {
+          setCurrentSlide(prev => prev + 1);
+        }
+      } else {
+        // Swipe right - previous slide
+        if (currentSlide > 0) {
+          setCurrentSlide(prev => prev - 1);
+        }
+      }
+      
+      setTimeout(() => { isScrolling.current = false; }, 600);
+    }
+  };
+
   const toggleVideo = () => {
     if (videoRef.current) {
       if (isVideoPlaying) {
@@ -161,7 +198,13 @@ const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-dark">
+    <section 
+      ref={heroRef} 
+      id="home" 
+      className="relative min-h-screen flex items-center overflow-hidden bg-dark"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-200 to-dark-100" />
       
