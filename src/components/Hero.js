@@ -315,9 +315,9 @@ const Hero = () => {
                   loop 
                   muted 
                   playsInline 
-                  className="absolute inset-0 w-full h-full object-cover opacity-50"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/80 md:via-dark/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark/90 via-dark/50 md:via-dark/40 to-transparent" />
               </div>
             )}
             
@@ -340,12 +340,12 @@ const Hero = () => {
             </div>
 
       {/* Main Content - Overlay */}
-      <div className="container-custom relative z-20 w-full py-24 lg:py-32">
-        <div className="max-w-2xl">
+      <div className="container-custom relative z-20 w-full py-20 md:py-24 lg:py-32 px-4 md:px-8">
+        <div className="max-w-xl md:max-w-2xl">
           
           {/* Left Content */}
           <motion.div 
-            className="space-y-6"
+            className="space-y-3 md:space-y-6"
             key={currentSlide}
             variants={containerVariants}
             initial="hidden"
@@ -354,15 +354,15 @@ const Hero = () => {
             {/* Company Badge */}
             <motion.div variants={itemVariants} className="flex items-center gap-3">
               <div 
-                className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full"
+                className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 glass-card rounded-full"
                 style={{ borderColor: `${currentSlideData.accent}40` }}
               >
                 <div 
-                  className="w-2 h-2 rounded-full animate-pulse"
+                  className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full animate-pulse"
                   style={{ backgroundColor: currentSlideData.accent }}
                 />
                 <span 
-                  className="text-sm font-bold tracking-wider"
+                  className="text-xs md:text-sm font-bold tracking-wider"
                   style={{ color: currentSlideData.accent }}
                 >
                   {currentSlideData.company}
@@ -373,7 +373,7 @@ const Hero = () => {
             {/* Tagline */}
             <motion.p 
               variants={itemVariants}
-              className="text-light-400 text-sm uppercase tracking-[0.2em] font-medium"
+              className="text-light-400 text-xs md:text-sm uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium"
             >
               {currentSlideData.tagline}
             </motion.p>
@@ -381,7 +381,7 @@ const Hero = () => {
             {/* Title */}
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-light leading-[1.1] whitespace-pre-line"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-light leading-[1.15] md:leading-[1.1]"
             >
               {currentSlideData.title.split('\n').map((line, i) => (
                 <span key={i}>
@@ -394,52 +394,29 @@ const Hero = () => {
             {/* Description */}
             <motion.p 
               variants={itemVariants}
-              className="text-light-300 text-lg leading-relaxed max-w-xl"
+              className="text-light-300 text-sm md:text-base lg:text-lg leading-relaxed max-w-md md:max-w-xl"
             >
               {currentSlideData.description}
             </motion.p>
+          </motion.div>
 
-            {/* Features */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2">
+          {/* Features - Bottom positioned on mobile */}
+          <motion.div 
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            className="absolute bottom-32 md:bottom-24 left-4 md:left-8 lg:left-16 right-4 md:right-auto z-20"
+          >
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {currentSlideData.features.map((feature, idx) => (
                 <div 
                   key={idx} 
-                  className="glass-card px-4 py-2 rounded-lg"
+                  className="glass-card px-3 md:px-4 py-1.5 md:py-2 rounded-lg"
                 >
-                  <span className="text-light-200 text-sm font-medium">{feature}</span>
+                  <span className="text-light-200 text-xs md:text-sm font-medium">{feature}</span>
                 </div>
               ))}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
-              <a href="#services" className="btn-primary group">
-                <span className="relative z-10 flex items-center gap-2">
-                Keşfet
-                  <svg 
-                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </a>
-              <a href="#contact" className="btn-outline group">
-                <span className="flex items-center gap-2">
-                İletişim
-                  <svg 
-                    className="w-5 h-5" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </span>
-              </a>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Media */}
