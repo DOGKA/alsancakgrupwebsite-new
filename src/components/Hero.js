@@ -576,34 +576,34 @@ const Hero = () => {
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Bottom Left - Desktop only */}
+                    {/* HUD Card Bottom Left - Smaller on mobile, positioned higher */}
                     <motion.div 
-                      className="hidden md:block absolute bottom-16 left-4 z-10 opacity-80"
+                      className="absolute bottom-28 md:bottom-16 left-2 md:left-4 z-10 opacity-70 md:opacity-80 scale-[0.65] md:scale-100 origin-bottom-left"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
                     >
                       <div className="relative group">
                         <div className="absolute -inset-0.5 bg-accent/30 rounded blur opacity-20" />
-                        <div className="relative w-52 rounded-lg glass-card overflow-hidden">
-                          <div className="bg-accent/10 border-b border-accent/20 px-3 py-1.5 flex justify-between items-center">
-                            <span className="text-[9px] text-accent font-mono font-bold tracking-tight">THREAT ANALYSIS</span>
+                        <div className="relative w-44 md:w-52 rounded-lg glass-card overflow-hidden">
+                          <div className="bg-accent/10 border-b border-accent/20 px-2 md:px-3 py-1 md:py-1.5 flex justify-between items-center">
+                            <span className="text-[8px] md:text-[9px] text-accent font-mono font-bold tracking-tight">THREAT ANALYSIS</span>
                             <div className="flex gap-0.5">
                               <div className="w-1 h-1 bg-accent rounded-full" />
                               <div className="w-1 h-1 bg-accent/30 rounded-full" />
                               <div className="w-1 h-1 bg-accent/30 rounded-full" />
                             </div>
                           </div>
-                          <div className="p-3">
-                            <div className="flex items-end gap-0.5 h-8 opacity-70">
-                              <div className="w-2 h-3 bg-accent animate-pulse" style={{ animationDelay: '0s' }} />
-                              <div className="w-2 h-5 bg-accent animate-pulse" style={{ animationDelay: '0.2s' }} />
-                              <div className="w-2 h-8 bg-accent animate-pulse" style={{ animationDelay: '0.4s' }} />
-                              <div className="w-2 h-4 bg-accent animate-pulse" style={{ animationDelay: '0.6s' }} />
-                              <div className="w-2 h-2 bg-accent animate-pulse" style={{ animationDelay: '0.8s' }} />
+                          <div className="p-2 md:p-3">
+                            <div className="flex items-end gap-0.5 h-6 md:h-8 opacity-70">
+                              <div className="w-1.5 md:w-2 h-2 md:h-3 bg-accent animate-pulse" style={{ animationDelay: '0s' }} />
+                              <div className="w-1.5 md:w-2 h-4 md:h-5 bg-accent animate-pulse" style={{ animationDelay: '0.2s' }} />
+                              <div className="w-1.5 md:w-2 h-6 md:h-8 bg-accent animate-pulse" style={{ animationDelay: '0.4s' }} />
+                              <div className="w-1.5 md:w-2 h-3 md:h-4 bg-accent animate-pulse" style={{ animationDelay: '0.6s' }} />
+                              <div className="w-1.5 md:w-2 h-1.5 md:h-2 bg-accent animate-pulse" style={{ animationDelay: '0.8s' }} />
                               <div className="flex-1 border-b border-accent/30 mb-0.5 ml-1" />
                             </div>
-                            <div className="mt-2 text-[9px] text-light-400 font-mono">
+                            <div className="mt-1.5 md:mt-2 text-[8px] md:text-[9px] text-light-400 font-mono">
                               STATUS: <span className="text-accent">MONITORING</span>
                             </div>
                           </div>
@@ -611,29 +611,29 @@ const Hero = () => {
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Bottom Right - Desktop only */}
+                    {/* HUD Card Bottom Right - Smaller on mobile, positioned higher */}
                     <motion.div 
-                      className="hidden md:block absolute bottom-16 right-4 z-10 opacity-80"
+                      className="absolute bottom-28 md:bottom-16 right-2 md:right-4 z-10 opacity-70 md:opacity-80 scale-[0.65] md:scale-100 origin-bottom-right"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.1 }}
                     >
                       <div className="relative group">
                         <div className="absolute -inset-0.5 bg-cyber/30 rounded blur opacity-20" />
-                        <div className="relative w-44 rounded glass-card overflow-hidden">
-                          <div className="p-2">
+                        <div className="relative w-36 md:w-44 rounded glass-card overflow-hidden">
+                          <div className="p-1.5 md:p-2">
                             <div className="flex justify-between items-center mb-1">
-                              <span className="text-[9px] text-cyber font-mono uppercase">SECTOR SCAN</span>
-                              <svg className="w-3 h-3 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <span className="text-[8px] md:text-[9px] text-cyber font-mono uppercase">SECTOR SCAN</span>
+                              <svg className="w-2.5 h-2.5 md:w-3 md:h-3 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path d="M22 12h-2.48a2 2 0 00-1.93 1.46l-2.35 8.36a.25.25 0 01-.48 0L9.24 2.18a.25.25 0 00-.48 0l-2.35 8.36A2 2 0 014.49 12H2" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             </div>
-                            <div className="h-16 w-full overflow-hidden rounded border border-white/5 relative bg-dark-200 flex items-center justify-center">
-                              <svg className="w-10 h-10 text-cyber/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="h-12 md:h-16 w-full overflow-hidden rounded border border-white/5 relative bg-dark-200 flex items-center justify-center">
+                              <svg className="w-8 h-8 md:w-10 md:h-10 text-cyber/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                               </svg>
                             </div>
-                            <div className="mt-2 grid grid-cols-2 gap-1">
+                            <div className="mt-1.5 md:mt-2 grid grid-cols-2 gap-1">
                               <div className="bg-cyber/10 h-1 rounded w-full" />
                               <div className="bg-cyber/10 h-1 rounded w-3/4" />
                             </div>
