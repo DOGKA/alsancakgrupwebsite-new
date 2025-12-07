@@ -264,37 +264,31 @@ const Hero = () => {
             )}
             
             {currentSlideData.type === 'asdtc' && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                {/* Mobile: 9:16 aspect ratio video, Desktop: cover */}
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <video 
-                    src={currentSlideData.videoSrc}
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="md:absolute md:inset-0 md:w-full md:h-full md:object-cover md:opacity-50 max-h-[80vh] w-auto h-auto object-contain opacity-60"
-                    style={{ aspectRatio: '9/16' }}
-                  />
-                </div>
+              <div className="absolute inset-0">
+                {/* Fullscreen video on both mobile and desktop */}
+                <video 
+                  src={currentSlideData.videoSrc}
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="absolute inset-0 w-full h-full object-cover opacity-50"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/80 md:via-dark/70 to-transparent" />
               </div>
             )}
             
             {currentSlideData.type === 'railway' && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                {/* Mobile: 9:16 aspect ratio video, Desktop: cover */}
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <video 
-                    src="/locomotive-intro.webm"
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="md:absolute md:inset-0 md:w-full md:h-full md:object-cover md:opacity-80 max-h-[80vh] w-auto h-auto object-contain opacity-70"
-                    style={{ aspectRatio: '9/16' }}
-                  />
-                </div>
+              <div className="absolute inset-0">
+                {/* Fullscreen video on both mobile and desktop */}
+                <video 
+                  src="/locomotive-intro.webm"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="absolute inset-0 w-full h-full object-cover opacity-70"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark via-dark/70 md:via-dark/60 to-transparent" />
               </div>
             )}
@@ -495,84 +489,84 @@ const Hero = () => {
                 </div>
             </div>
 
-                    {/* HUD Card Top Left - Desktop only */}
+                    {/* HUD Card Top Left - Smaller on mobile */}
                     <motion.div 
-                      className="hidden md:block absolute top-4 left-4 z-10 opacity-90"
+                      className="absolute top-2 left-2 md:top-4 md:left-4 z-10 opacity-80 md:opacity-90 scale-75 md:scale-100 origin-top-left"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 }}
                     >
                       <div className="relative group">
                         <div className="absolute -inset-0.5 bg-accent/30 rounded blur opacity-20 group-hover:opacity-40 transition duration-500" />
-                        <div className="relative w-48 rounded glass-card overflow-hidden">
+                        <div className="relative w-36 md:w-48 rounded glass-card overflow-hidden">
                           <div className="h-1 w-full bg-accent/50" />
-                          <div className="p-2 relative">
-                            <div className="absolute top-2 right-2 flex gap-1">
+                          <div className="p-1.5 md:p-2 relative">
+                            <div className="absolute top-1 right-1 md:top-2 md:right-2 flex gap-1">
                               <div className="w-1 h-1 bg-accent rounded-full animate-pulse" />
                               <div className="w-1 h-1 bg-accent/50 rounded-full" />
                             </div>
-                            <div className="h-20 w-full overflow-hidden rounded border border-white/5 relative bg-dark-200">
+                            <div className="h-14 md:h-20 w-full overflow-hidden rounded border border-white/5 relative bg-dark-200">
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <svg className="w-12 h-12 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-8 h-8 md:w-12 md:h-12 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                               </div>
-                              <div className="absolute bottom-1 left-2 text-[10px] font-mono text-accent">CAM_01 // LIVE</div>
+                              <div className="absolute bottom-0.5 left-1 md:bottom-1 md:left-2 text-[8px] md:text-[10px] font-mono text-accent">CAM_01 // LIVE</div>
                             </div>
-                            <div className="mt-2 flex justify-between items-end">
+                            <div className="mt-1 md:mt-2 flex justify-between items-end">
                               <div className="flex flex-col">
-                                <span className="text-[9px] text-light-500 font-mono uppercase">Status</span>
-                                <span className="text-xs font-bold text-light font-mono">SECURE</span>
+                                <span className="text-[7px] md:text-[9px] text-light-500 font-mono uppercase">Status</span>
+                                <span className="text-[10px] md:text-xs font-bold text-light font-mono">SECURE</span>
                               </div>
-                              <div className="text-[10px] text-accent font-mono">ACTIVE</div>
+                              <div className="text-[8px] md:text-[10px] text-accent font-mono">ACTIVE</div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </motion.div>
 
-                    {/* HUD Card Top Right - Desktop only */}
+                    {/* HUD Card Top Right - Smaller on mobile */}
                     <motion.div 
-                      className="hidden md:block absolute top-4 right-4 z-10 opacity-90"
+                      className="absolute top-2 right-2 md:top-4 md:right-4 z-10 opacity-80 md:opacity-90 scale-75 md:scale-100 origin-top-right"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.7 }}
                     >
                       <div className="relative group">
                         <div className="absolute -inset-0.5 bg-cyber/30 rounded blur opacity-20 group-hover:opacity-40 transition duration-500" />
-                        <div className="relative w-52 rounded glass-card overflow-hidden">
-                          <div className="p-3 relative">
-                            <div className="flex justify-between items-center mb-2 border-b border-white/5 pb-2">
-                              <div className="flex items-center gap-2">
-                                <svg className="w-3 h-3 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="relative w-40 md:w-52 rounded glass-card overflow-hidden">
+                          <div className="p-2 md:p-3 relative">
+                            <div className="flex justify-between items-center mb-1 md:mb-2 border-b border-white/5 pb-1 md:pb-2">
+                              <div className="flex items-center gap-1 md:gap-2">
+                                <svg className="w-2.5 h-2.5 md:w-3 md:h-3 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <circle cx="12" cy="12" r="10" />
                                   <line x1="22" x2="18" y1="12" y2="12" />
                                   <line x1="6" x2="2" y1="12" y2="12" />
                                   <line x1="12" x2="12" y1="6" y2="2" />
                                   <line x1="12" x2="12" y1="22" y2="18" />
                                 </svg>
-                                <span className="text-[9px] text-cyber font-mono uppercase tracking-widest">AERIAL RECON</span>
+                                <span className="text-[7px] md:text-[9px] text-cyber font-mono uppercase tracking-wider md:tracking-widest">AERIAL RECON</span>
                               </div>
-                              <span className="text-[9px] text-accent font-mono animate-pulse">REC</span>
+                              <span className="text-[7px] md:text-[9px] text-accent font-mono animate-pulse">REC</span>
                             </div>
-                            <div className="h-24 w-full overflow-hidden rounded border border-cyber/20 relative bg-dark-200">
+                            <div className="h-16 md:h-24 w-full overflow-hidden rounded border border-cyber/20 relative bg-dark-200">
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <svg className="w-16 h-16 text-cyber/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-10 h-10 md:w-16 md:h-16 text-cyber/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                               </div>
                               {/* Corner brackets */}
-                              <div className="absolute top-1 left-1 w-2 h-2 border-t border-l border-white/50" />
-                              <div className="absolute top-1 right-1 w-2 h-2 border-t border-r border-white/50" />
-                              <div className="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-white/50" />
-                              <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-white/50" />
+                              <div className="absolute top-1 left-1 w-1.5 h-1.5 md:w-2 md:h-2 border-t border-l border-white/50" />
+                              <div className="absolute top-1 right-1 w-1.5 h-1.5 md:w-2 md:h-2 border-t border-r border-white/50" />
+                              <div className="absolute bottom-1 left-1 w-1.5 h-1.5 md:w-2 md:h-2 border-b border-l border-white/50" />
+                              <div className="absolute bottom-1 right-1 w-1.5 h-1.5 md:w-2 md:h-2 border-b border-r border-white/50" />
                             </div>
-                            <div className="mt-2 grid grid-cols-2 gap-2 text-[9px] font-mono text-light-400">
-                              <div className="flex justify-between bg-white/5 px-1.5 py-0.5 rounded">
+                            <div className="mt-1 md:mt-2 grid grid-cols-2 gap-1 md:gap-2 text-[7px] md:text-[9px] font-mono text-light-400">
+                              <div className="flex justify-between bg-white/5 px-1 py-0.5 rounded">
                                 <span>ZONES</span>
                                 <span className="text-light">30+</span>
                               </div>
-                              <div className="flex justify-between bg-white/5 px-1.5 py-0.5 rounded">
+                              <div className="flex justify-between bg-white/5 px-1 py-0.5 rounded">
                                 <span>OPS</span>
                                 <span className="text-light">ACTIVE</span>
                               </div>
@@ -671,28 +665,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Navigation Arrows - Bottom on mobile, sides on desktop */}
-      {/* Mobile: Bottom center */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-4 md:hidden">
-        <button
-          onClick={prevSlide}
-          className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300"
-        >
-          <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={nextSlide}
-          className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-glass-hover transition-all duration-300"
-        >
-          <svg className="w-5 h-5 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-      
-      {/* Desktop: Sides */}
+      {/* Navigation Arrows - Desktop only (mobile uses scroll) */}
       <button
         onClick={prevSlide}
         className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 glass-card rounded-full items-center justify-center hover:bg-glass-hover transition-all duration-300 hover:scale-110"
